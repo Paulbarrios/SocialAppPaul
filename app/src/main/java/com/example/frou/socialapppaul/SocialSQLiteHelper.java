@@ -1,5 +1,6 @@
 package com.example.frou.socialapppaul;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -9,10 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Frou on 26/01/2015.
  */
 public class SocialSQLiteHelper extends SQLiteOpenHelper{
-    //Sentencia SQL para crear la tabla de Usuarios
-    String sqlCreate = "CREATE TABLE \"usuarios\" (\"id\" integer PRIMARY KEY AUTOINCREMENT, \"nombre\" char, \"apellido\" char, \"email\" char, \"password\" char)";
-    String sqlCreate1 = "CREATE TABLE \"articulos\" (\"id\" integer PRIMARY KEY AUTOINCREMENT, \"titulo\" char, \"descripcion\" char, \"id_usuario\" integer, \"contenido\" TEXT)";
-    String sqlCreate2 = "CREATE TABLE \"amigos\" (\"id\" integer PRIMARY KEY AUTOINCREMENT, \"id_user1\" integer, \"id_user2\" integer)";
+
+    private String sqlCreate1 = "CREATE TABLE \"articulos\" (\"id\" INTEGER PRIMARY KEY AUTOINCREMENT, \"titulo\" CHAR, \"descripcion\" CHAR, \"contenido\" TEXT)";
+
     public SocialSQLiteHelper(Context contexto, String nombre,
                               CursorFactory factory, int version) {
         super(contexto, nombre, factory, version);
@@ -20,23 +20,18 @@ public class SocialSQLiteHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //Se ejecuta la sentencia SQL de creación de la tabla
-        db.execSQL(sqlCreate);
-        db.execSQL(sqlCreate1);
-        db.execSQL(sqlCreate2);
+
+       db.execSQL(sqlCreate1);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) {
-        //NOTA: Por simplicidad del ejemplo aquí utilizamos directamente la opción de
-        //      eliminar la tabla anterior y crearla de nuevo vacía con el nuevo formato.
-        //      Sin embargo lo normal será que haya que migrar datos de la tabla antigua
-        //      a la nueva, por lo que este método debería ser más elaborado.
 
-        //Se elimina la versión anterior de la tabla
-        db.execSQL("DROP TABLE IF EXISTS Usuarios");
+        db.execSQL("DROP TABLE IF EXISTS articulos");
 
-        //Se crea la nueva versión de la tabla
-        db.execSQL(sqlCreate);
+        db.execSQL(sqlCreate1);
     }
+
+
 }
