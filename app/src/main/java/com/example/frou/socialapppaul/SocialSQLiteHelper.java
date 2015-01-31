@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class SocialSQLiteHelper extends SQLiteOpenHelper{
 
-    private String sqlCreate1 = "CREATE TABLE \"articulos\" (\"id\" INTEGER PRIMARY KEY AUTOINCREMENT, \"titulo\" CHAR, \"descripcion\" CHAR, \"contenido\" TEXT)";
+    private String sqlCreate1 = "CREATE TABLE \"articulos\" (\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT, \"titulo\" CHAR, \"descripcion\" CHAR, \"contenido\" TEXT)";
 
     public SocialSQLiteHelper(Context contexto, String nombre,
                               CursorFactory factory, int version) {

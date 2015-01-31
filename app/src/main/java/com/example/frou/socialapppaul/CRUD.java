@@ -41,12 +41,12 @@ public class CRUD {
         valores.put("contenido",contenido);
 
 
-        return db.update(TABLE_ARTICULOS, valores, "id="+id, null);
+        return db.update(TABLE_ARTICULOS, valores, "_id="+id, null);
     }
 
     public long deleteArticulo(int id){
 
-        return db.delete(TABLE_ARTICULOS, "id=" + id, null);
+        return db.delete(TABLE_ARTICULOS, "_id=" + id, null);
     }
 
     public Cursor getAllArticulos(){
@@ -56,6 +56,6 @@ public class CRUD {
 
     public Cursor getArticulosById(int id){
 
-        return db.rawQuery("SELECT * FROM "+TABLE_ARTICULOS+" WHERE id='"+id+"'", null);
+        return db.rawQuery("SELECT * FROM "+TABLE_ARTICULOS+" WHERE _id='"+id+"'", null);
     }
 }
