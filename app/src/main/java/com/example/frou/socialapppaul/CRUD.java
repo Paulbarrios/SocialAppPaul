@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 
 /**
@@ -55,7 +56,7 @@ public class CRUD {
     }
 
     public Cursor getArticulosById(int id){
-
-        return db.rawQuery("SELECT * FROM "+TABLE_ARTICULOS+" WHERE _id='"+id+"'", null);
+        Log.e("TAG", "SELECT * FROM "+TABLE_ARTICULOS+" WHERE _id="+id);
+        return db.rawQuery("SELECT * FROM "+TABLE_ARTICULOS+" WHERE _id="+id, null);
     }
 }

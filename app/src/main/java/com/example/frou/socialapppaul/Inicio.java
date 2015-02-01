@@ -2,7 +2,7 @@ package com.example.frou.socialapppaul;
 
 
 import android.app.Fragment;
-import android.content.Intent;
+import android.app.FragmentManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,8 +48,14 @@ public class Inicio extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Cursor cursor = (Cursor) parent.getItemAtPosition(position);
-                Log.d("TAG", "clicked on item: " + cursor.getInt(0));
+                Log.e("TAG", "clicked on item: " + cursor.getInt(0));
+                Fragment verArticulo = new VerArticulo();
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", cursor.getInt(0));
+                verArticulo.setArguments(bundle);
 
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top).replace(R.id.content_frame, verArticulo).commit();
 
             }
         });
