@@ -1,0 +1,62 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.frou.socialapppaul.EditarArticulo">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo"
+            android:id="@+id/textView" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tituloEditTextE" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcion"
+            android:id="@+id/textView2" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/descripcionEditTextE" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contenido"
+            android:id="@+id/textView3" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/contenidoEditTextE"
+            android:layout_weight="0.67" />
+
+        <Button
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:text="@string/guardarCambios"
+            android:id="@+id/buttonEditar"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:text="@string/volver"
+            android:id="@+id/buttonVolver"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+</FrameLayout>

@@ -35,8 +35,8 @@ public class AddArticulo extends Fragment {
         descripcion = (TextView) v.findViewById(R.id.descripcionEditText2);
         contenido = (TextView) v.findViewById(R.id.contenidoEditText3);
 
-        Button loginButton = (Button) v.findViewById(R.id.buttonAdd);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        Button boton = (Button) v.findViewById(R.id.buttonAdd);
+        boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String tituloT = null;
@@ -44,36 +44,35 @@ public class AddArticulo extends Fragment {
                 String contenidoT = null;
 
 
-
                 Boolean pass = true;
-                if(titulo.getText() == null){
+                if (titulo.getText() == null) {
                     pass = false;
-                }else{
+                } else {
                     tituloT = titulo.getText().toString();
                 }
-                if(descripcion.getText() == null){
+                if (descripcion.getText() == null) {
                     pass = false;
-                }else{
+                } else {
                     descripcionT = descripcion.getText().toString();
                 }
-                if(contenido.getText() == null){
+                if (contenido.getText() == null) {
                     pass = false;
-                }else{
+                } else {
                     contenidoT = contenido.getText().toString();
                 }
-                Toast tostada = Toast.makeText(getActivity().getApplicationContext(),"",Toast.LENGTH_SHORT);
-                if(pass == false){
+                Toast tostada = Toast.makeText(getActivity().getApplicationContext(), "", Toast.LENGTH_SHORT);
+                if (pass == false) {
                     tostada.setText("Rellene todos lo campos");
                     tostada.show();
-                }else{
+                } else {
                     CRUD gestor = new CRUD(getActivity().getApplicationContext());
-                    if(gestor.createArticulo(tituloT, descripcionT,contenidoT) > 0){
+                    if (gestor.createArticulo(tituloT, descripcionT, contenidoT) > 0) {
                         tostada.setText("Se ha guardado con exito");
                         tostada.show();
                         titulo.setText("");
                         contenido.setText("");
                         descripcion.setText("");
-                    }else{
+                    } else {
                         tostada.setText("Error al guardar en la base de datos. Intentelo de nuevo");
                         tostada.show();
                     }

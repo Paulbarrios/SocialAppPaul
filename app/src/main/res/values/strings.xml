@@ -10,5 +10,9 @@
     <string name="descripcion">Descripción</string>
     <string name="contenido">Contenido</string>
     <string name="anadir">Añadir</string>
+    <string name="editar">Editar</string>
+    <string name="guardarCambios">Guardar cambios</string>
+    <string name="volver">Volver</string>
+    <string name="eliminar">Eliminar</string>
 
 </resources>
