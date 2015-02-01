@@ -71,6 +71,9 @@ public class MainActivity extends ActionBarActivity {
             case 0:
                 fragment = new Inicio();
                 break;
+            case 1:
+                fragment = new AddArticulo();
+                break;
 
         }
 

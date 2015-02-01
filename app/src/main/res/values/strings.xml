@@ -6,5 +6,9 @@
     <string name="navigation_drawer_open">Abierto</string>
     <string name="navigation_drawer_close">cerrado</string>
     <string name="hello_blank_fragment">hello</string>
+    <string name="titulo">Titulo</string>
+    <string name="descripcion">Descripción</string>
+    <string name="contenido">Contenido</string>
+    <string name="anadir">Añadir</string>
 
 </resources>
