@@ -50,6 +50,11 @@ public class CRUD {
         return db.delete(TABLE_ARTICULOS, "_id=" + id, null);
     }
 
+    public long deleteAll(){
+
+        return db.delete(TABLE_ARTICULOS, null, null);
+    }
+
     public Cursor getAllArticulos(){
 
         return db.rawQuery("SELECT * FROM "+TABLE_ARTICULOS, null);

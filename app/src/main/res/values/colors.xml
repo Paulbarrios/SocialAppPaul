@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimario">#4CAF50</color>
+    <color name="colorPrimarioOscuro">#388E3C</color>
+    <color name="colorAcento">#607D8B</color>
+    <color name="colorTextoPrimario">#212121</color>
+    <color name="colorControlNormal">#388E3C</color>
+    <color name="colorBotonNormal">#388E3C</color>
+    <color name="white">#FFFFFF</color>
+
+</resources>

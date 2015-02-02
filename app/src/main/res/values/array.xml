@@ -3,5 +3,7 @@
     <string-array name="nav_options">
         <item>Inicio</item>
         <item>Añadir articulo</item>
+        <item>Hacer una copia de seguridad</item>
+        <item>Restaurar copia de seguridad</item>
     </string-array>
 </resources>

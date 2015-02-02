@@ -2,7 +2,10 @@ package com.example.frou.socialapppaul;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -67,6 +71,7 @@ public class MainActivity extends ActionBarActivity {
     // muestra el view seleccionado (lo llama el listener del navigation drawer).
     private void displayView(int position) {
         Fragment fragment = null;
+        CRUD gestor = new CRUD(getApplicationContext());
         switch (position) {
             case 0:
                 fragment = new Inicio();
@@ -74,21 +79,29 @@ public class MainActivity extends ActionBarActivity {
             case 1:
                 fragment = new AddArticulo();
                 break;
+            case 2:
+                new HiloBackup(getApplication(),gestor).execute();
+                break;
+
+            case 3:
+                new HiloRestaurar(getApplication(),gestor).execute();
+                break;
 
         }
 
 
+        if(fragment != null){
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top).replace(R.id.content_frame, fragment).commit();
+            String[] listaTitulos = getResources().getStringArray(R.array.nav_options);
+            setTitle(listaTitulos[position]);
+        }
 
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_top).replace(R.id.content_frame, fragment).commit();
-
-        // cerrar el drawer, ponerle titulo, etc.
         DrawerLayout miDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ListView listaNav = (ListView) findViewById(R.id.left_drawer);
-        String[] listaTitulos = getResources().getStringArray(R.array.nav_options);
         listaNav.setItemChecked(position, true);
         listaNav.setSelection(position);
-        setTitle(listaTitulos[position]);
+
         miDrawerLayout.closeDrawer(listaNav);
     }
 
@@ -105,5 +118,63 @@ public class MainActivity extends ActionBarActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+}
+
+class HiloBackup extends AsyncTask<Void, Integer, Boolean> {
+
+    Context context;
+    CRUD crud;
+
+
+    public HiloBackup(Context c, CRUD crud) {
+        this.context = c;
+        this.crud = crud;
+    }
+
+    @Override
+    protected void onPostExecute(Boolean result) {
+        Toast tostada = Toast.makeText(context, "Copia de seguridad relizada con exito.", Toast.LENGTH_SHORT);
+        tostada.show();
+    }
+
+
+    @Override
+    protected Boolean doInBackground(Void... params) {
+
+        Cursor cursor = crud.getAllArticulos();
+        DOM dom = new DOM();
+        dom.guardarDatos(cursor, context);
+
+
+        return true;
+    }
+}
+
+class HiloRestaurar extends AsyncTask<Void, Integer, Boolean> {
+
+    Context context;
+    CRUD crud;
+
+
+    public HiloRestaurar(Context c, CRUD crud) {
+        this.context = c;
+        this.crud = crud;
+    }
+
+    @Override
+    protected void onPostExecute(Boolean result) {
+        Toast tostada = Toast.makeText(context, "Copia de seguridad restaurada con exito. Recarga el Inicio", Toast.LENGTH_SHORT);
+        tostada.show();
+    }
+
+
+    @Override
+    protected Boolean doInBackground(Void... params) {
+
+        DOM dom = new DOM();
+        dom.leerDatos(crud, context);
+
+        return true;
     }
 }

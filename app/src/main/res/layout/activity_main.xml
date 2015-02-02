@@ -8,7 +8,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:theme="@style/AppTheme" />
+        app:theme="@style/Theme.AppCompat"
+        android:background="@color/colorPrimario"/>
 
     <include
         android:id="@+id/drawer_layout"

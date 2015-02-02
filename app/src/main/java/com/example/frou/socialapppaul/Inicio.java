@@ -31,10 +31,6 @@ public class Inicio extends Fragment {
         View v = inflater.inflate(R.layout.fragment_inicio, container, false);
         CRUD gestor = new CRUD(getActivity().getApplicationContext());
 
-//       for(int i = 1; i < 12; i++){
-//           gestor.createArticulo("Titulo "+i, "Descripcion "+i, "Contenido");
-//       }
-
 
 
 
